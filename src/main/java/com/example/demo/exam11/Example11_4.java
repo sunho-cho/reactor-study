@@ -16,7 +16,9 @@ public class Example11_4 {
         Mono
             .deferContextual(ctx ->
                 Mono.just(ctx.get(key1) + ", " + 
+                        // Optional 래핑 반환
                         ctx.getOrEmpty(key2).orElse("no firstName") + " " + 
+                        // 없으면 default 값
                         ctx.getOrDefault(key3, "no lastName"))
             )
             .publishOn(Schedulers.parallel())

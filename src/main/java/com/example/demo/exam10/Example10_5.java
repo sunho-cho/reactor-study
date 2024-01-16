@@ -8,6 +8,9 @@ public class Example10_5 {
 
     public static void main(String[] args) throws InterruptedException {
 
+        // publishOn, subscribeOn 이 사용되지 않을 경우
+        // flux --> filter --> map --> subscribe
+
         Flux.fromArray(new Integer[] {1, 3, 5, 7})
                 .doOnNext(data -> log.info("# doOnNext fromArray: {}", data))
                 .filter(data -> data > 3)

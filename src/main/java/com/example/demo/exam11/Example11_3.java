@@ -20,6 +20,7 @@ public class Example11_3 {
             )
             .publishOn(Schedulers.parallel())
             .contextWrite(context -> 
+                // putAll 현재 Context 에 merge 후 새로운 context 를 생성 
                 context.putAll(Context.of(key2, "Steve", key3, "Jobs").readOnly())
             )
             .contextWrite(context -> context.put(key1, "Apple"))

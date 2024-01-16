@@ -13,11 +13,13 @@ public class Example11_7 {
 
         Mono
             .just("Steve")
+            // but. 외부에서는 읽을 수 없음
             //.transformDeferredContextual((stringMono, ctx) ->
             //    ctx.get("role")
             //)
             .flatMap(name ->
                 Mono.deferContextual(ctx -> 
+                    // inner Sequence 는 외부의 context 를 읽을 수 있음
                     Mono.just(ctx.get(key1) + ", " + name)
                     .transformDeferredContextual((mono, innerCtx) -> 
                         mono.map(data -> data + ", " + innerCtx.get("role"))

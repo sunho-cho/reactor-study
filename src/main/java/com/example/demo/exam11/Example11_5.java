@@ -17,6 +17,8 @@ public class Example11_5 {
             )
             .publishOn(Schedulers.parallel());
 
+
+        // 구독별로 Context 가 관리 되기 때문에 공유 되지 않음
         mono
             .contextWrite(context -> context.put(key1, "Apple"))
             .subscribe(data -> log.info("# subscribe1 onNext: {}", data));

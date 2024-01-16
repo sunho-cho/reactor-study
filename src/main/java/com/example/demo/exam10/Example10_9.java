@@ -9,6 +9,9 @@ public class Example10_9 {
 
     public static void main(String[] args) throws InterruptedException {
 
+        // immediate 별도의 Thread 를 추가적으로 생성하지 않고 현재 Thread 작업
+        // 케이스가 있다함.... 암튼 그럼
+
         Flux.fromArray(new Integer[] {1, 3, 5, 7})
                 .publishOn(Schedulers.parallel())        
                 .filter(data -> data > 3)
